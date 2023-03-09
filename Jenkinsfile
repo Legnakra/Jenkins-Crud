@@ -10,7 +10,7 @@ pipeline {
             stages {
                 stage('Clone') {
                     steps {
-                        git branch:'main',url:'https://github.com/Legnakra/Crudphp-Jenkins'
+                        git branch:'main',url:'https://github.com/Legnakra/Jenkins-Crud'
                     }
                 }
                 stage('Build') {
@@ -37,7 +37,7 @@ pipeline {
                 stage ('SSH') {
     steps{
         sshagent(credentials : ['SSH_ROOT']) {
-            sh 'ssh -o StrictHostKeyChecking=no maria@mariatec.es wget https://raw.githubusercontent.com/Legnakra/Crudphp-Jenkins/main/docker-compose.yaml -O docker-compose.yaml'
+            sh 'ssh -o StrictHostKeyChecking=no maria@mariatec.es wget https://raw.githubusercontent.com/Legnakra/Jenkins-Crud/main/docker-compose.yaml -O docker-compose.yaml'
             sh 'ssh -o StrictHostKeyChecking=no maria@mariatec.es sudo docker compose up -d --force-recreate'
         }
     }
